@@ -62,4 +62,27 @@ dependencies {
     //Hilt
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+
+    //Splash Screen
+    implementation(libs.androidx.core.splashscreen)
+
+    //Retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    //Coil
+    implementation(libs.coil.compose)
+
+    //Datastore
+    implementation(libs.androidx.datastore.preferences)
+
+    //Paging 3
+    implementation(libs.androidx.paging.runtime.ktx)
+    implementation(libs.androidx.paging.compose)
+
+
+    //Navigation
+    implementation(libs.androidx.navigation.compose)
 }
