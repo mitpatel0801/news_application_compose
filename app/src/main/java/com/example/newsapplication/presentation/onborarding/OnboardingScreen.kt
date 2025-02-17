@@ -26,7 +26,7 @@ import com.example.newsapplication.ui.theme.Dimen
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingScreen() {
+fun OnboardingScreen(startButtonOnClick: () -> Unit) {
     Scaffold { innerPadding ->
         Column(modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())) {
             val pagerState = rememberPagerState { pages.size }
@@ -67,9 +67,9 @@ fun OnboardingScreen() {
                     coroutineScope.launch {
                         pagerState.animateScrollToPage(pagerState.currentPage - 1)
                     }
-                }, {
-                    //TODO: Navigate to home screen
-                })
+                },
+                    startButtonOnClick
+                )
             }
 
         }
@@ -105,6 +105,6 @@ enum class ButtonState {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun OnboardingScreenPreview() {
-    OnboardingScreen()
+    OnboardingScreen{}
 }
 
