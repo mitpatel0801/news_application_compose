@@ -3,6 +3,7 @@ package com.example.newsapplication.data.manager
 import android.app.Application
 import android.content.Context
 import androidx.datastore.preferences.core.MutablePreferences
+import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.preferencesDataStore
@@ -22,7 +23,7 @@ class LocalUserManagerImpl @Inject constructor(
     }
 
     override fun readAppEntry(): Flow<Boolean> {
-        return application.dataStore.data.map { preferences ->
+        return application.dataStore.data.map { preferences: Preferences ->
             preferences[PreferenceKeys.APP_ENTRY_KEY] ?: false
         }
     }

@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.newsapplication.presentation.main_nav_graph.MainNavGraph
 import com.example.newsapplication.presentation.onborarding.OnboardingScreen
 import com.example.newsapplication.ui.theme.NewsApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,11 +21,13 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
+        installSplashScreen().setKeepOnScreenCondition({ mainViewmodel.startDestination == null })
         enableEdgeToEdge()
         setContent {
             NewsApplicationTheme {
-                OnboardingScreen(mainViewmodel::setSaveAppEntry)
+                mainViewmodel.startDestination?.let {
+                    MainNavGraph(it)
+                }
             }
         }
     }
@@ -36,6 +39,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun AppPreview() {
     NewsApplicationTheme {
-        OnboardingScreen {}
+        OnboardingScreen()
     }
 }

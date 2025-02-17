@@ -18,6 +18,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.newsapplication.presentation.common.PrimaryButton
 import com.example.newsapplication.presentation.common.TextButton
 import com.example.newsapplication.presentation.onborarding.components.PagerImageWithDescription
@@ -26,7 +27,10 @@ import com.example.newsapplication.ui.theme.Dimen
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingScreen(startButtonOnClick: () -> Unit) {
+fun OnboardingScreen(
+    onboardingViewModel: OnboardingViewModel = hiltViewModel(),
+    navigateToHomePage: () -> Unit = {}
+) {
     Scaffold { innerPadding ->
         Column(modifier = Modifier.padding(bottom = innerPadding.calculateBottomPadding())) {
             val pagerState = rememberPagerState { pages.size }
@@ -67,9 +71,10 @@ fun OnboardingScreen(startButtonOnClick: () -> Unit) {
                     coroutineScope.launch {
                         pagerState.animateScrollToPage(pagerState.currentPage - 1)
                     }
-                },
-                    startButtonOnClick
-                )
+                }, {
+                    onboardingViewModel.setSaveAppEntry()
+                    navigateToHomePage()
+                })
             }
 
         }
@@ -105,6 +110,6 @@ enum class ButtonState {
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 fun OnboardingScreenPreview() {
-    OnboardingScreen{}
+    OnboardingScreen()
 }
 
