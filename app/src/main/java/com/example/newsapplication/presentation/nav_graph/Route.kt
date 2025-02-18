@@ -1,4 +1,4 @@
-package com.example.newsapplication.presentation.main_nav_graph
+package com.example.newsapplication.presentation.nav_graph
 
 sealed class Route(val route: String) {
     data object OnboardingScreen : Route("onboarding")

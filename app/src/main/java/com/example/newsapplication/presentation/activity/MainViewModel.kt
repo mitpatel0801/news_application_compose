@@ -5,15 +5,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.newsapplication.domain.usecases.app_entry.ReadAppEntry
-import com.example.newsapplication.presentation.main_nav_graph.Route
+import com.example.newsapplication.domain.usecases.app_entry.ReadAppEntryUseCase
+import com.example.newsapplication.presentation.nav_graph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val readAppEntry: ReadAppEntry
+    private val readAppEntry: ReadAppEntryUseCase
 ) : ViewModel() {
 
     var startDestination: String? by mutableStateOf(null)

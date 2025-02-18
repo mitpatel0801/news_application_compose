@@ -9,7 +9,7 @@ import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.example.newsapplication.presentation.main_nav_graph.MainNavGraph
+import com.example.newsapplication.presentation.nav_graph.MainNavGraph
 import com.example.newsapplication.presentation.onborarding.OnboardingScreen
 import com.example.newsapplication.ui.theme.NewsApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
