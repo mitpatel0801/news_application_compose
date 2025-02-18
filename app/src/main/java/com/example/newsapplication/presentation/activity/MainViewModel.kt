@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.newsapplication.domain.usecases.ReadAppEntry
+import com.example.newsapplication.domain.usecases.app_entry.ReadAppEntry
 import com.example.newsapplication.presentation.main_nav_graph.Route
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
